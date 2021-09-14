@@ -1,13 +1,20 @@
 
 import { config } from 'dotenv';
 import { join, resolve } from 'path'
-console.log(resolve(__dirname, '..', '..', 'environments', `${process.env.NODE_ENV}.env`))
-config(
-    {
-        path: resolve(__dirname, '..', '..', 'environments', `${process.env.NODE_ENV}.env`)
-    }
-)
+if (process.env.NODE_ENV !== 'production') {
+    console.log(resolve(__dirname, '..', '..', 'environments', `${process.env.NODE_ENV}.env`))
+    config(
+        {
+            path: resolve(__dirname, '..', '..', 'environments', `${process.env.NODE_ENV}.env`)
+        }
+    )
+}
+console.log(__dirname)
+
 import { readFileSync } from 'fs';
+import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
+import { initialize, use } from 'passport';
+
 import express from 'express'
 import logger from 'morgan'
 // import { version } from '../package.json'
@@ -16,14 +23,12 @@ import { createServer as createServerHttps } from 'https'
 import { createServer as createServerHttp } from 'http'
 import userRouter from './routes/user-routes'
 
-import { initialize, use } from 'passport';
 
-import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
 
 
 use(new JwtStrategy({
         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: readFileSync(join(__dirname, 'cert', 'server-key.pem'))
+        secretOrKey: readFileSync(join(__dirname, 'cert', 'user-service.key'))
     },
     (payload, done) => {
         console.log(`Jwt Payload: ${payload}`)
