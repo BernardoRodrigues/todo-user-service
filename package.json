@@ -10,8 +10,8 @@
     "build:dev": "tsc && copyfiles -f src/cert/*.crt dist/src/cert && copyfiles -f src/cert/*.key dist/src/cert && copyfiles -f package.json dist",
     "start:dev": "NODE_ENV=dev node dist/src/index.js",
     "build:prod": "tsc",
-    "start:prod": "NODE_ENV=production node dist/src/index.js",
-    "prepare": "npm run build:prod && copyfiles -f /app/src/cert/user-service.key /app/dist/src/cert/",
+    "start:prod": "copyfiles -f /app/src/cert/user-service.key /app/dist/src/cert/ && NODE_ENV=production node dist/src/index.js",
+    "prepare": "npm run build:prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Bernardo Rodrigues",
