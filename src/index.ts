@@ -10,7 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
     )
 }
 console.log(__dirname)
-
+readdirSync(join(__dirname, '..')).forEach(console.log)
 import { readFileSync, readdirSync } from 'fs';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
 import { initialize, use } from 'passport';
@@ -23,7 +23,7 @@ import { createServer as createServerHttps } from 'https'
 import { createServer as createServerHttp } from 'http'
 import userRouter from './routes/user-routes'
 
-readdirSync(join(__dirname, '..')).forEach(console.log)
+
 
 
 use(new JwtStrategy({
