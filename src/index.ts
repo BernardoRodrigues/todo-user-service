@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 import { readFileSync, readdirSync } from 'fs';
 console.log(__dirname)
-readdirSync(join(__dirname, '..')).forEach(console.log)
+readdirSync(join(__dirname)).forEach(console.log)
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
 import { initialize, use } from 'passport';
 
