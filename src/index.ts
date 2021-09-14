@@ -14,7 +14,7 @@ console.log(join(__dirname, '..', '..', 'src', 'cert'))
 console.log(join(__dirname))
 console.log(join(__dirname, '..'))
 
-readdirSync(join(__dirname, '..', '..', 'src', 'cert')).forEach((f) => console.log(`\n${f}`))
+readdirSync(join(__dirname,)).forEach((f) => console.log(`\n${f}`))
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
 import { initialize, use } from 'passport';
 
