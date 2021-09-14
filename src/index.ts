@@ -35,6 +35,7 @@ use(new JwtStrategy({
 // console.log("ENV: ", process.env)
 const app = express();
 const port = process.env.PORT || 3000;
+
 const server = createServerHttp(
     // {
     //     cert: readFileSync(join(__dirname, 'cert', 'user-service.crt')),

@@ -19,7 +19,7 @@ export class DbConnection {
         }
     }
 
-    query(text: string, params: any[]) {
+    query(text: string, params: any[] = []) {
         return this.pool.query(text, params)
     }
 

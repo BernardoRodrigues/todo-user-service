@@ -23,6 +23,11 @@ export class UserRepository {
         };
     }
 
+    public async checkConnection(): Promise<void> {
+        const {rows} = await this.db.query('select now()'); 
+        return;
+    }
+
     /**
      *
      * @param {string} email
