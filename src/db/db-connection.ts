@@ -12,7 +12,7 @@ export class DbConnection {
     constructor(private config?: string) {
         
         // const connection: ClientConfig = this.config;
-        if (process.env.NODE_ENV === 'prd') {
+        if (process.env.NODE_ENV === 'production') {
             this.pool = new Pool({connectionString: this.config, ssl:{rejectUnauthorized: false}});
         } else {
             this.pool = new Pool();
