@@ -35,7 +35,7 @@ const authenticate = async (req, res, next) => {
 // postgres://postgres:postgres@localhost:5432/todo_db
 const connection = new DbConnection(process.env.TODO_DB_URL);
 const userRepository = new UserRepository(connection);
-const key = readFileSync(join(__dirname, 'cert', 'server-key.pem'));
+const key = readFileSync(join(__dirname, '..', '..', '..' ,'cert', 'user-service.key'));
 // const dir = __dirname.split("/").slice(0, __dirname.split("/").length - 1).join("/")
 const userRouter = Router();
 userRepository
