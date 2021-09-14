@@ -12,6 +12,7 @@
     "build:prod": "tsc",
     "start:prod": "copyfiles -f /app/src/cert/user-service.key /app/dist/src/cert/ && NODE_ENV=production node dist/src/index.js",
     "postinstall": " npm run build:prod",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Bernardo Rodrigues",
