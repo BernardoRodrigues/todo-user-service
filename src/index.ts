@@ -1,6 +1,6 @@
 
 import { config } from 'dotenv';
-import { join, resolve } from 'path'
+import { resolve } from 'path'
 if (process.env.NODE_ENV !== 'production') {
     console.log(resolve(__dirname, '..', '..', 'environments', `${process.env.NODE_ENV}.env`))
     config(
@@ -9,36 +9,22 @@ if (process.env.NODE_ENV !== 'production') {
         }
     )
 }
-import { readFileSync, readdirSync } from 'fs';
 // console.log(join(__dirname, '..', '..', 'src', 'cert'))
 // console.log(join(__dirname))
 // console.log(join(__dirname, '..'))
 
 // readdirSync(join(__dirname,)).forEach((f) => console.log(`\n${f}`))
-import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt'
-import { initialize, use } from 'passport';
+import { initialize } from 'passport';
 
 import express from 'express'
 import logger from 'morgan'
 // import { version } from '../package.json'
 import { json } from 'body-parser'
-import { createServer as createServerHttps } from 'https'
 import { createServer as createServerHttp } from 'http'
 import userRouter from './routes/user-routes'
 
 
 
-
-use(new JwtStrategy({
-        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: readFileSync(join(__dirname,'cert', 'user-service.key'))
-    },
-    (payload, done) => {
-        console.log(`Jwt Payload: ${payload}`)
-        console.table(payload)
-        return done(null, {user: true});
-    })
-)
 // console.log(resolve('environments', `${process.env.NODE_ENV}.env`))
 // console.log("ENV: ", process.env)
 const app = express();
