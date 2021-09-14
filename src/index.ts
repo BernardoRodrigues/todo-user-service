@@ -14,8 +14,6 @@ if (process.env.NODE_ENV !== 'production') {
 // console.log(join(__dirname, '..'))
 
 // readdirSync(join(__dirname,)).forEach((f) => console.log(`\n${f}`))
-import { initialize } from 'passport';
-
 import express from 'express'
 import logger from 'morgan'
 // import { version } from '../package.json'
@@ -37,7 +35,6 @@ const server = createServerHttp(
     // },
     app
         .use(logger('dev'))
-        .use(initialize())
         .use(json())
         // .use(cors)
         .use(`/service/user`, userRouter)
