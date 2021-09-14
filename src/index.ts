@@ -31,7 +31,7 @@ import userRouter from './routes/user-routes'
 
 use(new JwtStrategy({
         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-        secretOrKey: readFileSync(join(__dirname, '..', '..', '..' ,'cert', 'user-service.key'))
+        secretOrKey: readFileSync(join(__dirname,'cert', 'user-service.key'))
     },
     (payload, done) => {
         console.log(`Jwt Payload: ${payload}`)
